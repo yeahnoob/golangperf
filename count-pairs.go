@@ -22,11 +22,18 @@ func main() {
 		p := strings.Split(scanner.Text(), " ")
 		result[p[0]] = append(result[p[0]], p[1])
 	}
-	fmt.Println("Count of \"it\" = ", len(result["it"]))
-	fmt.Println("Count of \"as\" = ", len(result["as"]))
-	fmt.Println("Count of \"of\" = ", len(result["of"]))
 	if errscan := scanner.Err(); errscan != nil {
 		fmt.Println(errscan)
 		return
 	}
+
+	errfile = srcfile.Close()
+	if errfile != nil {
+		fmt.Println(errfile)
+		return
+	}
+
+	fmt.Println("Count of \"it\" = ", len(result["it"]))
+	fmt.Println("Count of \"as\" = ", len(result["as"]))
+	fmt.Println("Count of \"of\" = ", len(result["of"]))
 }
